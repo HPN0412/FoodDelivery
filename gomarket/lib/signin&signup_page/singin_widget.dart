@@ -53,48 +53,10 @@ class SigninWidget extends StatelessWidget {
                       color: Color(0xFFFFFFFF),
                       borderRadius: BorderRadius.circular(35)),
                   child: Column(
-                    // crossAxisAlignment: CrossAxisAlignment.center,
-                    mainAxisAlignment: MainAxisAlignment.center,
+                    // mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Container(
-                        padding: EdgeInsets.only(left: 19, right: 18),
-                        child: TextField(
-                          decoration: InputDecoration(
-                              prefixIcon: Image.asset('images/user.png'),
-                              suffixIcon: Image.asset('images/check.png'),
-                              labelText: 'Username or E-Mail',
-                              labelStyle: TextStyle(
-                                color: Color(0xff838383),
-                                fontWeight: FontWeight.w300,
-                                fontSize: 15,
-                              )),
-                        ),
-                      ),
-                      Container(
-                        padding: EdgeInsets.only(
-                            left: 19, right: 18, top: 36, bottom: 29),
-                        child: TextField(
-                          decoration: InputDecoration(
-                              prefixIcon: Image.asset('images/lock.png'),
-                              suffixIcon: TextButton(
-                                child: Text(
-                                  'Forget?',
-                                  style: TextStyle(
-                                      color: Color(0xff0274BC),
-                                      fontFamily: 'PopPins',
-                                      fontSize: 15,
-                                      fontWeight: FontWeight.w500),
-                                ),
-                                onPressed: () {},
-                              ),
-                              labelText: 'Password',
-                              labelStyle: TextStyle(
-                                color: Color(0xff838383),
-                                fontWeight: FontWeight.w300,
-                                fontSize: 15,
-                              )),
-                        ),
-                      ),
+                      buildEmail(),
+                      buildPassword(),
                       Container(
                         width: 309,
                         height: 57,
@@ -151,4 +113,78 @@ class SigninWidget extends StatelessWidget {
       ),
     )));
   }
+}
+
+Widget buildEmail() {
+  return Container(
+    child: Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Padding(
+          padding: EdgeInsets.only(left: 20, top: 70),
+          child: Text(
+            'Username or E-Mail',
+            textAlign: TextAlign.start,
+            style: TextStyle(
+              color: Color(0xff838383),
+              fontWeight: FontWeight.w300,
+              fontSize: 15,
+            ),
+          ),
+        ),
+        Padding(
+          padding: EdgeInsets.only(left: 19, top: 10, right: 18),
+          child: TextField(
+            keyboardType: TextInputType.emailAddress,
+            decoration: InputDecoration(
+              prefixIcon: Image.asset('images/user.png'),
+              suffixIcon: Image.asset('images/check.png'),
+            ),
+          ),
+        ),
+      ],
+    ),
+  );
+}
+
+Widget buildPassword() {
+  return Container(
+    child: Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Padding(
+          padding: EdgeInsets.only(left: 20, top: 36),
+          child: Text(
+            'Password',
+            textAlign: TextAlign.start,
+            style: TextStyle(
+              color: Color(0xff838383),
+              fontWeight: FontWeight.w300,
+              fontSize: 15,
+            ),
+          ),
+        ),
+        Padding(
+          padding: EdgeInsets.only(left: 19, top: 8, right: 18, bottom: 29),
+          child: TextField(
+            keyboardType: TextInputType.emailAddress,
+            decoration: InputDecoration(
+              prefixIcon: Image.asset('images/lock.png'),
+              suffixIcon: TextButton(
+                child: Text(
+                  'Forget?',
+                  style: TextStyle(
+                      color: Color(0xff0274BC),
+                      fontFamily: 'PopPins',
+                      fontSize: 15,
+                      fontWeight: FontWeight.w500),
+                ),
+                onPressed: () {},
+              ),
+            ),
+          ),
+        ),
+      ],
+    ),
+  );
 }
