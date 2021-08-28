@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gomarket/signin&signup_page/singin_widget.dart';
+import 'package:gomarket/model/modeltext/mytext.dart';
+import 'package:gomarket/model/modelcolors/mycolor.dart';
 
 class Walktrough extends StatefulWidget {
   Walktrough({Key? key}) : super(key: key);
@@ -26,12 +28,13 @@ class _WalktroughState extends State<Walktrough> {
       margin: EdgeInsets.only(
         left: 6,
       ),
-      // duration: Duration(seconds: 5),
       height: 9,
       width: _choiced == true ? 33 : 10,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(4),
-        color: _choiced == true ? Color(0xFFFD8700) : Color(0xFFD4D4D4),
+        color: _choiced == true
+            ? MyColor.colorselectedstep
+            : MyColor.colorunselectedstep,
       ),
     );
   }
@@ -41,7 +44,7 @@ class _WalktroughState extends State<Walktrough> {
     return SafeArea(
         child: Scaffold(
             body: Container(
-                color: Color(0xFFFFFFFF),
+                color: MyColor.backgroundwalktrough,
                 height: MediaQuery.of(context).size.height,
                 child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -72,17 +75,15 @@ class _WalktroughState extends State<Walktrough> {
 
                                 Column(children: [
                                   Container(
-                                    margin: EdgeInsets.only(top: 30),
-                                    child: Text(
-                                      '7/24 \nFastest & Safest Delivery',
-                                      textAlign: TextAlign.center,
-                                      style: TextStyle(
-                                          fontFamily: 'PopPins',
-                                          fontSize: 28,
-                                          fontWeight: FontWeight.bold,
-                                          color: Colors.black),
-                                    ),
-                                  ),
+                                      alignment: Alignment.topCenter,
+                                      margin: EdgeInsets.only(top: 30),
+                                      child: MyFormText(
+                                        '7/24 \nFastest & Safest Delivery',
+                                        28,
+                                        FontWeight.bold,
+                                        Colors.black,
+                                        TextAlign.center,
+                                      )),
                                   Container(
                                       margin:
                                           EdgeInsetsDirectional.only(top: 20),
@@ -131,14 +132,12 @@ class _WalktroughState extends State<Walktrough> {
                                   height: 40,
                                   margin: EdgeInsets.only(left: 25, bottom: 35),
                                   child: TextButton(
-                                      child: Text(
-                                        'Skip',
-                                        style: TextStyle(
-                                            fontFamily: 'PopPins',
-                                            color: Colors.black,
-                                            fontSize: 18,
-                                            fontWeight: FontWeight.w300),
-                                      ),
+                                      child: MyFormText(
+                                          'Skip',
+                                          18,
+                                          FontWeight.w300,
+                                          Colors.black,
+                                          TextAlign.center),
                                       onPressed: () {
                                         Navigator.push(
                                             context,
@@ -156,11 +155,12 @@ class _WalktroughState extends State<Walktrough> {
                                   margin:
                                       EdgeInsets.only(left: 170, bottom: 35),
                                   child: TextButton(
-                                      child: new Text(
-                                        'Get Started',
-                                        style: TextStyle(
-                                            color: Colors.white, fontSize: 20),
-                                      ),
+                                      child: MyFormText(
+                                          'Get Started',
+                                          20,
+                                          FontWeight.normal,
+                                          Colors.white,
+                                          TextAlign.center),
                                       onPressed: () {
                                         setState(() {
                                           print(_currentPage);

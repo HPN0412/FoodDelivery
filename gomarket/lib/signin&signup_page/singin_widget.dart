@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gomarket/auther_page/fingerprint.dart';
 
 class SigninWidget extends StatelessWidget {
   const SigninWidget({Key? key}) : super(key: key);
@@ -7,13 +8,10 @@ class SigninWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
         child: Scaffold(
-            body: Container(
-      height: double.infinity,
-      width: double.infinity,
-      color: Color(0xFF0274BC),
-      child: SingleChildScrollView(
+      backgroundColor: Color(0xFF0274BC),
+      body: SingleChildScrollView(
+        padding: EdgeInsets.only(left: 25),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Container(
               margin: EdgeInsets.only(top: 101.5),
@@ -53,7 +51,6 @@ class SigninWidget extends StatelessWidget {
                       color: Color(0xFFFFFFFF),
                       borderRadius: BorderRadius.circular(35)),
                   child: Column(
-                    // mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       buildEmail(),
                       buildPassword(),
@@ -72,7 +69,12 @@ class SigninWidget extends StatelessWidget {
                                 fontSize: 17,
                                 fontWeight: FontWeight.w300),
                           ),
-                          onPressed: () {},
+                          onPressed: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (_) => FingerprintWidget()));
+                          },
                         ),
                       ),
                       Container(
@@ -111,7 +113,7 @@ class SigninWidget extends StatelessWidget {
           ],
         ),
       ),
-    )));
+    ));
   }
 }
 
@@ -133,7 +135,7 @@ Widget buildEmail() {
           ),
         ),
         Padding(
-          padding: EdgeInsets.only(left: 19, top: 10, right: 18),
+          padding: EdgeInsets.only(left: 19, top: 5, right: 18),
           child: TextField(
             keyboardType: TextInputType.emailAddress,
             decoration: InputDecoration(
@@ -165,9 +167,9 @@ Widget buildPassword() {
           ),
         ),
         Padding(
-          padding: EdgeInsets.only(left: 19, top: 8, right: 18, bottom: 29),
+          padding: EdgeInsets.only(left: 19, top: 8, right: 18, bottom: 25),
           child: TextField(
-            keyboardType: TextInputType.emailAddress,
+            obscureText: true,
             decoration: InputDecoration(
               prefixIcon: Image.asset('images/lock.png'),
               suffixIcon: TextButton(
